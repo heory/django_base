@@ -20,5 +20,5 @@ from book.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('index/', index)
-    path('blog/',include('book.urls'))
+    path('', include('book.urls'))
 ]

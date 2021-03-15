@@ -5,4 +5,7 @@ from django.http import HttpResponse
 # view
 def index(request):
 
-    return HttpResponse('ok')
+    ontext = {
+        'name': 'double one'
+    }
+    return render(request,'book/index.html',context=context)
