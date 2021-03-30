@@ -21,3 +21,8 @@ def shop(request,city_id,shop_id):
     order = query_params.get('order')
     print(order)
     return HttpResponse('奇哥的餐馆')
+
+def register(request):
+    data = request.POST
+    print(data)
+    return HttpResponse('OK')
