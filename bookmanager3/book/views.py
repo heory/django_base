@@ -56,3 +56,39 @@ def response_(request):
     # data= json.dumps(friends)
     # response = HttpResponse(data)
     return redirect('https://www.baidu.com')
+
+def set_cookie(request):
+    username=request.GET.get('username')
+    response=HttpResponse('set_cookie')
+    response.set_cookie('name',username)
+    return response
+
+def get_cookie(request):
+
+    print(request.COOKIES)
+
+    name=request.COOKIES.get('name')
+    return HttpResponse(name)
+
+def set_session(request):
+
+    username=request.GET.get('username')
+
+    user_id=1
+
+    request.session['user_id']=user_id
+    request.session['username']=username
+
+    # request.session.clear()
+    request.session.flush()
+
+    return HttpResponse('set_session')
+
+def get_session(request):
+
+    user_id=request.session['user_id']
+    username=request.session['username']
+
+    content='{},{}'.format(username,user_id)
+
+    return HttpResponse(content)
