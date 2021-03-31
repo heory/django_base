@@ -11,7 +11,8 @@ class MobileConverter:
 
 register_converter(MobileConverter,'phone')
 
-from book.views import create_book, shop, register, json_, response_, set_cookie, get_cookie, set_session, get_session
+from book.views import create_book, shop, register, json_, response_, set_cookie, get_cookie, set_session, get_session, \
+    login, LoginView, OrderView
 
 urlpatterns = [
     path('create/', create_book),
@@ -23,4 +24,8 @@ urlpatterns = [
     path('get_cookie',get_cookie),
     path('set_session/',set_session),
     path('get_session/',get_session),
+    path('login/',login),
+
+    path('163login/',LoginView.as_view()),
+    path('order/',OrderView.as_view()),
 ]

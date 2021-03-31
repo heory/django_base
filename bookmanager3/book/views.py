@@ -1,7 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import json
 # Create your views here.
+from django.views import View
+
 from book.models import BookInfo
 
 
@@ -92,3 +95,27 @@ def get_session(request):
     content='{},{}'.format(username,user_id)
 
     return HttpResponse(content)
+
+def login(request):
+    print(request.method)
+
+    if request.method=='GET':
+        return HttpResponse('get逻辑')
+    else:
+        return HttpResponse('post逻辑')
+
+class LoginView(View):
+
+    def get(self,request):
+        return HttpResponse('get get get')
+
+    def post(self,request):
+        return HttpResponse('post post post')
+
+class OrderView(LoginRequiredMixin,View):
+
+    def get(self,request):
+        return HttpResponse('GET 订单页面')
+
+    def post(self,request):
+        return HttpResponse('POST 订单页面')
