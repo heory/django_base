@@ -68,7 +68,7 @@ def set_cookie(request):
 
 def get_cookie(request):
 
-    print(request.COOKIES)
+    # print(request.COOKIES)
 
     name=request.COOKIES.get('name')
     return HttpResponse(name)
